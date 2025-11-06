@@ -1,23 +1,22 @@
-
-name: CI/CD Marcus Bargas
+name: CI/CD Jordan Iza
 
 on:
   push:
     branches:
-      - marcus-bargas   # Rama que activará el flujo
+      - Jordan
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Clonar el repositorio
+      - name: 📥 Clonar repositorio
         uses: actions/checkout@v3
 
       - name: 🐋 Configurar Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: 🔑 Iniciar sesión en DockerHub
+      - name: 🔑 Login en DockerHub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -28,4 +27,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: marcusbargas/proyecto-final:latest
+          tags: jordaniza/despliegue-contenedores:latest
