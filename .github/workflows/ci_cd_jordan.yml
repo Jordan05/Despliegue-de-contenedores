@@ -1,0 +1,30 @@
+name: CI/CD - Jordan Iza
+
+on:
+  push:
+    branches:
+      - Jordan   # o 'jordan', asegúrate de que coincida exactamente con el nombre de tu rama
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: 🐋 Configurar Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: 🔑 Iniciar sesión en Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: 🏗️ Construir y subir imagen Docker
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: jordaniza/despliegue-contenedores:1.0.0
