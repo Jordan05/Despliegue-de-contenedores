@@ -11,7 +11,7 @@ COPY proyecto-final-jordan-iza/package*.json ./
 RUN npm install
 
 # Copia el resto del proyecto
-COPY proyecto-final-jordan-iza/ .
+COPY . .
 
 # Expone el puerto
 EXPOSE 3000
