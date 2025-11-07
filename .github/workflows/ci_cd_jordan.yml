@@ -3,7 +3,7 @@ name: CI/CD - Jordan Iza
 on:
   push:
     branches:
-      - Jordan   # o 'jordan', asegúrate de que coincida exactamente con el nombre de tu rama
+      - Jordan
 
 jobs:
   build:
